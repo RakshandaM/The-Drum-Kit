@@ -1,33 +1,38 @@
+
+//clicking
+
+
 var numberOfDrumButtons = document.querySelectorAll(".drum").length;
 
 for (var i = 0; i < numberOfDrumButtons; i++) {
 
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 
-    var buttonInnerHTML = this.innerHTML;
+    var buttonInnerHTML = this.innerHTML; 
 
     makeSound(buttonInnerHTML);
 
-    buttonAnimation(buttonInnerHTML);
+    makeAnimation(buttonInnerHTML);
 
   });
+  
+} 
+  
+//keypad 
 
-}
-
-document.addEventListener("keypress", function(event) {
+  document.addEventListener("keypress", function(event) {
     
-  makeSound(event.key);
+    makeSound(event.key);
 
-  buttonAnimation(event.key);
+    makeAnimation(event.key)
+  });  
 
-});
 
+function makeSound(key){
 
-function makeSound(key) {
-
-  switch (key) {
+    switch (key) {   
     case "w":
-      var tom1 = new Audio("sounds/tom-1.mp3");
+      var tom1 = new Audio("sounds/tom-1.mp3"); 
       tom1.play();
       break;
 
@@ -62,20 +67,47 @@ function makeSound(key) {
       break;
 
 
-    default: console.log(key);
-
+    default: console.log(key);  
   }
 }
+ 
+//animation to the button
 
 
-function buttonAnimation(currentKey) {
-
-  var activeButton = document.querySelector("." + currentKey);
-
-  activeButton.classList.add("pressed");
+function makeAnimation(currentKey) {
+  var activeKey = document.querySelector("." + currentKey);
+  activeKey.classList.add("pressed");
 
   setTimeout(function() {
-    activeButton.classList.remove("pressed");
+    activeKey.classList.remove("pressed"); // Fix: Use activeKey instead of activeButton
   }, 100);
-
 }
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+
