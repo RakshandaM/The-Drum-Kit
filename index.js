@@ -8,7 +8,7 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
 
   document.querySelectorAll(".drum")[i].addEventListener("click", function() {
 
-    var buttonInnerHTML = this.innerHTML; 
+    var buttonInnerHTML = this.innerHTML; //event.target.innerhtml
 
     makeSound(buttonInnerHTML);
 
@@ -18,11 +18,11 @@ for (var i = 0; i < numberOfDrumButtons; i++) {
   
 } 
   
-//keypad 
+//keypad press
 
   document.addEventListener("keypress", function(event) {
     
-    makeSound(event.key);
+    makeSound(event.key); //goes to the switch function and detects the key press
 
     makeAnimation(event.key)
   });  
